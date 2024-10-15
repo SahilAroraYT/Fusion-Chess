@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <div>
 
-      <footer className="footer footer-center bg-black text-base-content rounded p-10 text-white">
+      <footer className="footer footer-center bg-black rounded p-5 text-white">
 
       <nav>
     <div className="flex justify-center gap-10">
@@ -28,7 +28,7 @@ const Footer = () => {
 
   </nav>
 
-<div className="flex flex-col justify-center my-5">
+<div className="flex flex-col justify-center">
     <p className="mx-auto">Fusion Chess</p>
     
     <p className="underline mx-auto">fusionchess64@gmail.com</p>
@@ -41,8 +41,8 @@ const Footer = () => {
 
  
 
-  <aside className="flex justify-center my-5">
-    <p>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
+  <aside className="flex justify-center">
+    <p>Copyright © {new Date().getFullYear()} - All rights reserved by Fusion Chess </p>
   </aside>
 
 </footer>
