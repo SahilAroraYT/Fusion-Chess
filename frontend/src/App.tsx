@@ -56,7 +56,7 @@ function App() {
       <section className="flex flex-col items-center justify-center p-6 bg-gray-50">
       <div className="max-w-lg w-full bg-white p-8 rounded-lg shadow-lg">
         <h2 className="text-3xl font-bold text-center mb-4">
-          Subscribe to our email newsletter!!!
+          Subscribe to our email newsletter!!! ( Feature Coming Soon )
         </h2>
         <p className="text-center mb-8 text-gray-600">
           Subscribe to our exciting monthly newsletter to stay updated on
