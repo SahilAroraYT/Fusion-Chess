@@ -1,5 +1,14 @@
+interface Plan {
+  title: string;
+  subtitle: string;
+  image: string;
+  objectives: string[];
+  schedule: string;
+  groupSize: string;
+  pricing: string;
+}
 
-const plans = [
+const plans: Plan[] = [
   {
     title: "Beginner",
     subtitle: "Learn to play",
@@ -38,7 +47,17 @@ const plans = [
   }
 ];
 
-const PlanCard = ({ title, subtitle, image, objectives, schedule, groupSize, pricing }) => {
+interface PlanCardProps {
+  title: string;
+  subtitle: string;
+  image: string;
+  objectives: string[];
+  schedule: string;
+  groupSize: string;
+  pricing: string;
+}
+
+const PlanCard: React.FC<PlanCardProps> = ({ title, subtitle, image, objectives, schedule, groupSize, pricing }) => {
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden">
       <img src={image} alt={title} className="h-48 w-full object-cover" />
@@ -65,7 +84,7 @@ const PlanCard = ({ title, subtitle, image, objectives, schedule, groupSize, pri
   );
 };
 
-const Pricing = () => {
+const Pricing: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-12 mt-16">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

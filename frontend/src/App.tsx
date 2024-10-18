@@ -15,12 +15,17 @@ function App() {
         </div>
 
         {/* Second card (text) */}
-        <div className="card rounded-box h-auto w-full lg:w-[750px] flex-grow flex flex-col items-start p-8 -z-50">
-          <h1 className="text-4xl font-bold mb-4">ABOUT US</h1>
-          <p className="text-2xl leading-relaxed">
+        <div className="card rounded-box h-auto w-full lg:w-[750px] flex-grow flex flex-col items-start p-8">
+          <h1 className="text-4xl font-bold mb-4 -z-10">ABOUT US</h1>
+          <p className="text-2xl leading-relaxed -z-10">
             Fusion Chess is dedicated to providing a fun and safe space for learning chess, especially for kids. Our experienced coaches are passionate about helping players improve, and we use creative methods to make lessons engaging and effective. Join our supportive community and take your chess skills to the next level!
           </p>
-          <button className="btn bg-[#2D4766] rounded-xl text-white text-xl mt-10 px-8 cursor-pointer">Register Today</button>
+          <button 
+  className="btn bg-[#2D4766] hover:bg-blue-700 text-white text-xl mt-10 px-8 rounded-xl cursor-pointer transition duration-300 ease-in-out ">
+  Register Today
+</button>
+
+
 
         </div>
       </div>
