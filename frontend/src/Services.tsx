@@ -10,7 +10,7 @@ const Services = () => {
             className="max-w-sm rounded-lg -z-50" />
           <div>
             <h1 className="text-5xl font-bold">The Trial Chess Class</h1>
-            <p className="py-6">
+            <p className="py-6 text-xl">
               Our trial class is free and gives you a chance to experience Fusion Chess Academy’s teaching approach before enrolling your child. It also allows us to:
               <br /><br />
               - Understand your child’s chess learning goals.
@@ -36,7 +36,7 @@ const Services = () => {
           
           <div>
             <h1 className="text-5xl font-bold">The Group Chess Class</h1>
-            <p className="py-6">
+            <p className="py-6 text-xl">
               Our group chess classes are live, interactive sessions where the instructor introduces a chess concept and provides a practice assignment. Students get to share their understanding, apply the concept, and ask questions.
               <br /><br />
               Here are the key benefits of group classes for your child
@@ -66,7 +66,7 @@ const Services = () => {
             className="max-w-sm rounded-lg -z-50" />
           <div>
             <h1 className="text-5xl font-bold">The Private Chess Class</h1>
-            <p className="py-6">
+            <p className="py-6 text-xl">
               The private class offers one-on-one instruction tailored to your child’s needs. In each session, the instructor introduces a chess concept and provides a related practice assignment. The student is encouraged to share their understanding, apply the concept, and ask questions for clarification.
             </p>
         
