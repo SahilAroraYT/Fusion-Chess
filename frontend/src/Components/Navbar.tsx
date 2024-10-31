@@ -61,9 +61,11 @@ const Navbar = () => {
 
         {/* Desktop view: Button inside navbar */}
         <div className="hidden md:block">
+        <NavLink to="/register">
           <button className="btn bg-[#2D4766] rounded-xl text-white px-8 md:ml-6">
             Register !!! <br />( Free Trial )
           </button>
+          </NavLink>
         </div>
       </div>
     </div>

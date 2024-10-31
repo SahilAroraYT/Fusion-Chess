@@ -8,6 +8,7 @@ import Pricing from './Pricing.tsx'
 import Services from './Services.tsx';
 import Contact from './Contact.tsx';
 import FAQ from './FAQ.tsx';
+import Register from './Register.tsx';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/faq",
         element: <FAQ />
+      },
+      {
+        path: "/register",
+        element: <Register />
       },
     ]
   },

@@ -11,7 +11,7 @@ function App() {
       <div className="flex w-full flex-col lg:flex-row justify-center items-start mt-16 lg:mt-0 -z-50"> {/* Adjust mt value based on your navbar height */}
         {/* First card (image) */}
         <div className="card rounded-box h-[515px] w-full lg:w-[750px] flex-grow flex items-center justify-center mb-6 lg:mb-0 -z-50">
-          <img src="/temp.png" alt="" className="w-[80%] h-[80%]" />
+          <img src="/temp.png" alt="" className="w-[100%] h-[100%] sm:w-[80%]" />
         </div>
 
         {/* Second card (text) */}
