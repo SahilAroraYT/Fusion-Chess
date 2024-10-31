@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 function App() {
   return (
     <div>
@@ -20,10 +22,11 @@ function App() {
           <p className="text-2xl leading-relaxed -z-10">
             Fusion Chess is dedicated to providing a fun and safe space for learning chess, especially for kids. Our experienced coaches are passionate about helping players improve, and we use creative methods to make lessons engaging and effective. Join our supportive community and take your chess skills to the next level!
           </p>
-          <button 
+         <NavLink to="/register"> <button 
   className="btn bg-[#2D4766] hover:bg-blue-700 text-white text-xl mt-10 px-8 rounded-xl cursor-pointer transition duration-300 ease-in-out ">
   Register Today
 </button>
+</NavLink>
 
 
 
@@ -52,9 +55,9 @@ function App() {
       {/* Get started today division */}
       <div className="w-full h-auto p-5 gap-5 flex flex-col md:flex-row items-center justify-evenly bg-[#4C5F72]">
         <p className="text-4xl text-white">GET STARTED TODAY!</p>
-        <button className="btn bg-[#2D4766] rounded-xl text-white text-xl px-10 cursor-pointer">
+        <NavLink to="/register">  <button className="btn bg-[#2D4766] rounded-xl text-white text-xl px-10 cursor-pointer">
           Register for a Free Trial
-        </button>
+        </button> </NavLink>
       </div>
 
       {/* Newsletter section */}

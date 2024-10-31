@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 interface Plan {
   title: string;
   subtitle: string;
@@ -93,9 +95,9 @@ const Pricing: React.FC = () => {
         ))}
       </div>
       <div className="mt-12 text-center">
-        <button className="bg-[#4C5F72] text-white text-xl py-3 px-8 rounded-full hover:bg-blue-700 transition">
+       <NavLink to="/register"> <button className="bg-[#4C5F72] text-white text-xl py-3 px-8 rounded-full hover:bg-blue-700 transition">
           REGISTER FOR A FREE TRIAL!
-        </button>
+        </button></NavLink>
       </div>
     </div>
   );

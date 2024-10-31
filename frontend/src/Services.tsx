@@ -1,4 +1,4 @@
-
+import { NavLink } from "react-router-dom"
 const Services = () => {
   return (
     <div>
@@ -75,9 +75,9 @@ const Services = () => {
       </div>
       <div className="w-full h-auto p-5 gap-5 flex flex-col md:flex-row items-center justify-evenly bg-[#4C5F72]">
         <p className="text-4xl text-white">GET STARTED TODAY!</p>
-        <button className="btn bg-[#2D4766] rounded-xl text-white text-xl px-10 cursor-pointer">
+        <NavLink to="/register"> <button className="btn bg-[#2D4766] rounded-xl text-white text-xl px-10 cursor-pointer">
           Register for a Free Trial
-        </button>
+        </button> </NavLink>
       </div>
     </div>
   )
