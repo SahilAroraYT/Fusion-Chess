@@ -12,7 +12,7 @@ const Footer = () => {
       <nav>
     <div className="flex justify-center gap-10">
 
-      <NavLink to="">
+      <NavLink to="https://www.instagram.com/fusionchess/" target="_blank">
       <FaInstagram size={35} />
       </NavLink>
 
