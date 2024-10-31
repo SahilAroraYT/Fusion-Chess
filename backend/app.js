@@ -4,10 +4,13 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const formRoutes = require('./routes/formRoutes');
 const dotenv = require('dotenv');
+const setupSwagger = require('./swagger');
+
 dotenv.config();
 
 const app = express();
-
+setupSwagger(app);
+app.use('/api/form', formRoutes);
 // Connect to MongoDB
 connectDB();
 
