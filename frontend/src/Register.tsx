@@ -44,6 +44,8 @@ interface FormData {
 const TrialClassForm: React.FC = () => {
   const [isParentForm, setIsParentForm] = useState<boolean>(true);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [alertVisible, setAlertVisible] = useState<boolean>(false);
+  const [experience, setExperience] = useState<string>("");
 
   // Using refs to access input values
   const firstNameRef = useRef<HTMLInputElement>(null);
@@ -54,7 +56,6 @@ const TrialClassForm: React.FC = () => {
   const kidsNameRef = useRef<HTMLInputElement>(null);
   const kidsAgeRef = useRef<HTMLSelectElement>(null);
   const countryRef = useRef<HTMLSelectElement>(null);
-  const experienceRef = useRef<HTMLInputElement>(null);
 
   const handleToggle = () => {
     setIsParentForm(!isParentForm);
@@ -69,10 +70,11 @@ const TrialClassForm: React.FC = () => {
     if (!firstNameRef.current?.value) validationErrors.firstName = 'First Name is required';
     if (!emailRef.current?.value) validationErrors.email = 'Email is required';
     if (!phoneRef.current?.value) validationErrors.phone = 'Phone number is required';
+    if (!ageRef.current?.value) validationErrors.age = 'Age is required';
     if (isParentForm && !kidsNameRef.current?.value) validationErrors.kidsName = "Kid's Name is required";
     if (isParentForm && !kidsAgeRef.current?.value) validationErrors.kidsAge = "Kid's Age is required";
     if (!countryRef.current?.value) validationErrors.country = 'Country is required';
-    if (!experienceRef.current?.value) validationErrors.experience = 'Experience level is required';
+    if (!experience) validationErrors.experience = 'Experience level is required';
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -86,7 +88,7 @@ const TrialClassForm: React.FC = () => {
         phone: phoneRef.current?.value || "",
         age: isParentForm ? null : ageRef.current?.value || "",
         country: countryRef.current?.value || "",
-        experience: experienceRef.current?.value || "",
+        experience: experience,
       };
 
       if (isParentForm) {
@@ -99,6 +101,8 @@ const TrialClassForm: React.FC = () => {
         const response = await axios.post('http://localhost:5000/api/register', data);
         if (response.status === 200) {
           console.log('Form submitted successfully');
+          setAlertVisible(true)
+          setTimeout(() => setAlertVisible(false), 5000);
         } else {
           console.error('Error submitting form');
         }
@@ -110,10 +114,28 @@ const TrialClassForm: React.FC = () => {
 
   return (
     <div className="p-6 max-w-md mx-auto bg-white rounded-md shadow-2xl mt-36 mb-20">
+      {alertVisible && (
+
+        // Alert BOX 
+        <div role="alert" className="alert alert-success">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-10 w-10 shrink-0 stroke-current text-white"
+          fill="none"
+          viewBox="0 0 24 24">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span className='text-white text-xl'>Form submitted Successfully !</span>
+      </div>
+      )}
       <h1 className="text-xl font-bold text-center mb-1">I'm a</h1>
       {/* Toggle Button */}
       <div className="flex justify-center items-center mb-4">
-        <span className="mr-2">Student</span>
+        <span className="mr-2 text-xl">Student</span>
         <div
           className={`relative inline-flex items-center h-6 rounded-full w-12 cursor-pointer ${
             isParentForm ? 'bg-blue-500' : 'bg-gray-300'
@@ -126,7 +148,7 @@ const TrialClassForm: React.FC = () => {
             } inline-block w-6 h-6 bg-white rounded-full`}
           />
         </div>
-        <span className="ml-2">Parent</span>
+        <span className="ml-2 text-xl">Parent</span>
       </div>
 
       <h2 className="text-xl font-semibold mb-4">
@@ -135,6 +157,8 @@ const TrialClassForm: React.FC = () => {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Form fields */}
+
+        {/* Name  */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block font-medium">First Name </label>
@@ -157,6 +181,7 @@ const TrialClassForm: React.FC = () => {
           </div>
         </div>
 
+            {/* Email  */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block font-medium">Email </label>
@@ -181,6 +206,8 @@ const TrialClassForm: React.FC = () => {
         </div>
 
         {!isParentForm && (
+
+          // Age 
           <div>
             <label className="block font-medium">Age </label>
             <select ref={ageRef} className="w-full border border-gray-300 rounded-md p-2">
@@ -191,10 +218,13 @@ const TrialClassForm: React.FC = () => {
                 </option>
               ))}
             </select>
+            {errors.age && <p className="text-red-500 text-sm">{errors.age}</p>}
           </div>
         )}
 
         {isParentForm && (
+          
+          // Kids name 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block font-medium">Kid's Name </label>
@@ -206,6 +236,8 @@ const TrialClassForm: React.FC = () => {
               />
               {errors.kidsName && <p className="text-red-500 text-sm">{errors.kidsName}</p>}
             </div>
+
+            {/* Kids age */}
             <div>
               <label className="block font-medium">Kid's Age </label>
               <select ref={kidsAgeRef} className="w-full border border-gray-300 rounded-md p-2">
@@ -221,6 +253,7 @@ const TrialClassForm: React.FC = () => {
           </div>
         )}
 
+        {/* Country */}
         <div>
           <label className="block font-medium">Country </label>
           <select ref={countryRef} className="w-full border border-gray-300 rounded-md p-2">
@@ -235,28 +268,55 @@ const TrialClassForm: React.FC = () => {
           {errors.country && <p className="text-red-500 text-sm">{errors.country}</p>}
         </div>
 
+        {/* Experience  */}
         <div>
-          <label className="block font-medium">Experience </label>
-          <div className="space-y-2">
-            {['New to Chess (Beginner)', 'Taken Classes/Plays Well (Advanced Beginner)', 'Played Tournaments (Intermediate)', 'Other'].map(
-              (exp, index) => (
-                <label key={index} className="flex items-center space-x-2">
-                  <input
-                    type="radio"
-                    name="experience"
-                    value={exp}
-                    ref={experienceRef}
-                    className="form-radio"
-                  />
-                  <span>{exp}</span>
-                </label>
-              )
-            )}
+          <label className="block font-medium">Experience</label>
+          <div className="flex flex-col">
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                name="experience"
+                value="New to Chess (Beginner)"
+                onChange={() => setExperience("New to Chess (Beginner)")}
+                className="mr-2"
+              />
+              <span>New to Chess (Beginner)</span>
+            </label>
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                name="experience"
+                value="Taken Classes/Plays Well (Advanced Beginner)"
+                onChange={() => setExperience("Taken Classes/Plays Well (Advanced Beginner)")}
+                className="mr-2"
+              />
+              <span>Taken Classes/Plays Well (Advanced Beginner)</span>
+            </label>
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                name="experience"
+                value="Played Tournaments (Intermediate)"
+                onChange={() => setExperience("Played Tournaments (Intermediate)")}
+                className="mr-2"
+              />
+              <span>Played Tournaments (Intermediate)</span>
+            </label>
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                name="experience"
+                value="Other"
+                onChange={() => setExperience("Other")}
+                className="mr-2"
+              />
+              <span>Other</span>
+            </label>
           </div>
           {errors.experience && <p className="text-red-500 text-sm">{errors.experience}</p>}
         </div>
 
-        <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-md mt-4">
+        <button type="submit" className="w-full bg-blue-500 hover:bg-indigo-700 transition duration-200 text-white py-2 rounded-md mt-4">
           Submit
         </button>
       </form>
