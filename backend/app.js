@@ -14,9 +14,12 @@ setupSwagger(app);
 // Connect to MongoDB
 connectDB();
 
+// Check environment variable
+console.log("Allowed origin for CORS:", process.env.origin);
+
 // Middleware
 const corsOptions = {
-    origin: 'https://fusionchess.netlify.app', // Allow only your frontend's origin
+    origin: process.env.origin, // Allow only your frontend's origin
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Specify allowed HTTP methods
   };
   app.use(cors(corsOptions));
