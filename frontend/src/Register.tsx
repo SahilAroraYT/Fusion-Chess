@@ -98,7 +98,7 @@ const TrialClassForm: React.FC = () => {
 
       try {
         // Make API call to send data to MongoDB
-        const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}api/register`, data);
+        const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/register`, data);
         if (response.status === 200) {
           console.log('Form submitted successfully');
           setAlertVisible(true)
