@@ -17,7 +17,6 @@ connectDB();
 // Middleware
 const corsOptions = {
     origin: 'https://fusionchess.netlify.app', // Allow only your frontend's origin
-    credentials: true, // Allow cookies and credentials if needed
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Specify allowed HTTP methods
   };
   app.use(cors(corsOptions));
