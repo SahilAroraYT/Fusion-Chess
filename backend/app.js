@@ -15,7 +15,15 @@ app.use('/api/form', formRoutes);
 connectDB();
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+    origin: process.env.origin, // Replace with your frontend's URL
+    credentials: true, // Allow cookies and credentials
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+  };
+  
+  app.use(cors(corsOptions));
+
+
 app.use(bodyParser.json());
 
 // Routes
