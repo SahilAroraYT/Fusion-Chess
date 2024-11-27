@@ -19,7 +19,7 @@ console.log("Allowed origin for CORS:", process.env.origin);
 
 // Middleware
 const corsOptions = {
-    origin: 'https://fusionchess.netlify.app', // Hardcode temporarily for testing
+    origin: process.env.origin, // Hardcode temporarily for testing
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   };
   
