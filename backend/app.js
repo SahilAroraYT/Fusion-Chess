@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const formRoutes = require('./routes/formRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 const dotenv = require('dotenv');
 const setupSwagger = require('./swagger');
 
@@ -29,6 +30,7 @@ const corsOptions = {
 app.use(bodyParser.json());
 
 // Routes
+app.use('/api/admin', adminRoutes);
 app.use('/api', formRoutes);
 
 module.exports = app;

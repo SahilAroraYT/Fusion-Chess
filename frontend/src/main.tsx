@@ -9,6 +9,8 @@ import Services from './Services.tsx';
 import Contact from './Contact.tsx';
 import FAQ from './FAQ.tsx';
 import Register from './Register.tsx';
+import AdminLogin from './AdminLogin.tsx';
+import AdminDashboard from './AdminDashboard.tsx';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +40,14 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />
+      },
+      {
+        path: "/admin/login",
+        element: <AdminLogin />
+      },
+      {
+        path: "/admin/dashboard",
+        element: <AdminDashboard />
       },
     ]
   },
