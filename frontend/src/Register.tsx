@@ -1,5 +1,4 @@
 import { useState, useRef, FormEvent } from 'react';
-import axios from 'axios';
 import countries from './assets/countries.json'; // Import JSON file with country data
 
 type Country = {
@@ -98,13 +97,20 @@ const TrialClassForm: React.FC = () => {
 
       try {
         // Make API call to send data to MongoDB
-        const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/register`, data);
-        if (response.status === 200) {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/register`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
           console.log('Form submitted successfully');
-          setAlertVisible(true)
+          setAlertVisible(true);
           setTimeout(() => setAlertVisible(false), 5000);
         } else {
-          console.error('Error submitting form');
+          console.error('Error submitting form:', await response.text());
         }
       } catch (error) {
         console.error('Error:', error);
