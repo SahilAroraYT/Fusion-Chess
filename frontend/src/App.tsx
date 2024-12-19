@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 function App() {
   return (
-    <div>
+    <div className="bg-[#0e0e0e]">
       {/* bg image - hidden on screens smaller than md (768px) */}
       <div className="hidden md:block -mt-20 pt-0 w-full h-auto">
         <img src="/bg.webp" alt="background image" className="w-full h-auto object-cover" />

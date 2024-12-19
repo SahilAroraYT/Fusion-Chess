@@ -88,7 +88,8 @@ const PlanCard: React.FC<PlanCardProps> = ({ title, subtitle, image, objectives,
 
 const Pricing: React.FC = () => {
   return (
-    <div className="container mx-auto px-4 py-12 mt-16">
+    <div className="bg-[#0e0e0e]">
+    <div className="container mx-auto px-4 py-12 mt-16 ">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {plans.map((plan, index) => (
           <PlanCard key={index} {...plan} />
@@ -99,6 +100,7 @@ const Pricing: React.FC = () => {
           REGISTER FOR A FREE TRIAL!
         </button></NavLink>
       </div>
+    </div>
     </div>
   );
 };

@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom"
 const Services = () => {
   return (
-    <div>
+    <div className="bg-[#0e0e0e]">
       {/* Trial Chess  */}
-      <div className="hero z-10 mt-20">
+      <div className="hero z-10 mt-20 ">
         <div className="hero-content flex-col lg:flex-row">
           <img
             src="/trial.webp"
@@ -26,7 +26,7 @@ const Services = () => {
       </div>
       <div className="divider"></div>
       {/* Intermediate  */}
-      <div className="hero -z-50 mt-10">
+      <div className="hero -z-50 mt-10 ">
         <div className="hero-content flex-col lg:flex-row">
           
             <img
@@ -59,7 +59,7 @@ const Services = () => {
       </div>
       <div className="divider"></div>
       {/* Private  */}
-      <div className="hero -z-50 my-10">
+      <div className="hero -z-50 my-10 ">
         <div className="hero-content flex-col lg:flex-row">
           <img
             src="/private.webp"

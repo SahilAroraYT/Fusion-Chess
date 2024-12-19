@@ -19,6 +19,7 @@ const AdminLogin = () => {
             }
 
             const data = await response.json();
+            console.log(data)
             localStorage.setItem('token', data.token);
             setMessage('Login successful');
             window.location.href = '/admin/dashboard';

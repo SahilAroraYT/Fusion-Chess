@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom"
 const FAQ = () => {
     return (
         <div>
+        <div>
             {/* Question div  */}
             <div className="container mx-auto  mt-40">
                 <h1 className="font-bold text-4xl">Do You Have a question?</h1>
@@ -121,6 +122,7 @@ them with any questions</p>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

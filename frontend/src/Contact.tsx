@@ -1,6 +1,6 @@
 const Contact = () => {
   return (
-    <div className='flex justify-center mt-20'>
+    <div className='flex justify-center mt-20 bg-[#0e0e0e]'>
       <iframe
         src="https://docs.google.com/forms/d/e/1FAIpQLSfPkhsQT8Kq5-Al-Uf-f4jmjcRFD_2HtPrzB0a4ebIlGkPyxA/viewform?embedded=true"
         width={640}
