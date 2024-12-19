@@ -33,12 +33,13 @@ interface FormData {
   lastName: string;
   email: string;
   phone: string;
-  age: string | null;
+  dob: string; 
   country: string;
   experience: string;
   kidsName?: string;
   kidsAge?: string;
 }
+
 
 const TrialClassForm: React.FC = () => {
   const [isParentForm, setIsParentForm] = useState<boolean>(true);
@@ -51,9 +52,10 @@ const TrialClassForm: React.FC = () => {
   const lastNameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
-  const ageRef = useRef<HTMLSelectElement>(null);
+  const dobRef = useRef<HTMLInputElement>(null);
   const kidsNameRef = useRef<HTMLInputElement>(null);
-  const kidsAgeRef = useRef<HTMLSelectElement>(null);
+  const kidsAgeRef = useRef<HTMLInputElement>(null); // Updated type to match <input type="date">
+
   const countryRef = useRef<HTMLSelectElement>(null);
 
   const handleToggle = () => {
@@ -64,17 +66,17 @@ const TrialClassForm: React.FC = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const validationErrors: Record<string, string> = {};
-
+  
     // Validate required fields
     if (!firstNameRef.current?.value) validationErrors.firstName = 'First Name is required';
     if (!emailRef.current?.value) validationErrors.email = 'Email is required';
     if (!phoneRef.current?.value) validationErrors.phone = 'Phone number is required';
-    if (!ageRef.current?.value) validationErrors.age = 'Age is required';
+    if (!dobRef.current?.value) validationErrors.dob = 'Date of Birth is required';  // Validate DOB
     if (isParentForm && !kidsNameRef.current?.value) validationErrors.kidsName = "Kid's Name is required";
     if (isParentForm && !kidsAgeRef.current?.value) validationErrors.kidsAge = "Kid's Age is required";
     if (!countryRef.current?.value) validationErrors.country = 'Country is required';
     if (!experience) validationErrors.experience = 'Experience level is required';
-
+  
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
@@ -85,16 +87,17 @@ const TrialClassForm: React.FC = () => {
         lastName: lastNameRef.current?.value || "",
         email: emailRef.current?.value || "",
         phone: phoneRef.current?.value || "",
-        age: isParentForm ? null : ageRef.current?.value || "",
+        dob: dobRef.current?.value || "",  // Use dob instead of age
         country: countryRef.current?.value || "",
         experience: experience,
       };
-
+  
       if (isParentForm) {
         data.kidsName = kidsNameRef.current?.value || "";
-        data.kidsAge = kidsAgeRef.current?.value || "";
+        data.kidsAge = kidsAgeRef.current?.value || ""; 
       }
-
+      
+  
       try {
         // Make API call to send data to MongoDB
         const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/register`, {
@@ -104,7 +107,7 @@ const TrialClassForm: React.FC = () => {
           },
           body: JSON.stringify(data),
         });
-
+  
         if (response.ok) {
           console.log('Form submitted successfully');
           setAlertVisible(true);
@@ -117,6 +120,7 @@ const TrialClassForm: React.FC = () => {
       }
     }
   };
+  
 
   return (
     <div className="p-6 max-w-md mx-auto bg-white rounded-md shadow-2xl mt-36 mb-20">
@@ -215,49 +219,41 @@ const TrialClassForm: React.FC = () => {
 
           // Age 
           <div>
-            <label className="block font-medium">Age </label>
-            <select ref={ageRef} className="w-full border border-gray-300 rounded-md p-2">
-              <option value="">Choose Age</option>
-              {[...Array(83)].map((_, i) => (
-                <option key={i} value={i + 18}>
-                  {i + 18}
-                </option>
-              ))}
-            </select>
-            {errors.age && <p className="text-red-500 text-sm">{errors.age}</p>}
-          </div>
+  <label className="block font-medium">Date of Birth </label>
+  <input
+    ref={dobRef}
+    type="date"
+    className="w-full border border-gray-300 rounded-md p-2"
+  />
+  {errors.dob && <p className="text-red-500 text-sm">{errors.dob}</p>}
+</div>
+
         )}
 
-        {isParentForm && (
-          
-          // Kids name 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block font-medium">Kid's Name </label>
-              <input
-                ref={kidsNameRef}
-                type="text"
-                placeholder="Kid's Name"
-                className="w-full border border-gray-300 rounded-md p-2"
-              />
-              {errors.kidsName && <p className="text-red-500 text-sm">{errors.kidsName}</p>}
-            </div>
+{isParentForm && (
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+      <label className="block font-medium">Kid's Name</label>
+      <input
+        ref={kidsNameRef}
+        type="text"
+        placeholder="Kid's Name"
+        className="w-full border border-gray-300 rounded-md p-2"
+      />
+      {errors.kidsName && <p className="text-red-500 text-sm">{errors.kidsName}</p>}
+    </div>
+    <div>
+      <label className="block font-medium">Kid's Age</label>
+      <input
+        ref={kidsAgeRef}
+        type="date"
+        className="w-full border border-gray-300 rounded-md p-2"
+      />
+      {errors.kidsAge && <p className="text-red-500 text-sm">{errors.kidsAge}</p>}
+    </div>
+  </div>
+)}
 
-            {/* Kids age */}
-            <div>
-              <label className="block font-medium">Kid's Age </label>
-              <select ref={kidsAgeRef} className="w-full border border-gray-300 rounded-md p-2">
-                <option value="">Choose Age</option>
-                {[...Array(16)].map((_, i) => (
-                  <option key={i} value={i + 3}>
-                    {i + 3}
-                  </option>
-                ))}
-              </select>
-              {errors.kidsAge && <p className="text-red-500 text-sm">{errors.kidsAge}</p>}
-            </div>
-          </div>
-        )}
 
         {/* Country */}
         <div>

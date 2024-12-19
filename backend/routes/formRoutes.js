@@ -24,8 +24,8 @@ const { registerFormData } = require('../models/formData'); // Adjust path as ne
  *                 type: string
  *               phone:
  *                 type: string
- *               age:
- *                 type: string
+ *               dob:
+ *                 type: date
  *               country:
  *                 type: string
  *               experience:
@@ -33,7 +33,7 @@ const { registerFormData } = require('../models/formData'); // Adjust path as ne
  *               kidsName:
  *                 type: string
  *               kidsAge:
- *                 type: string
+ *                 type: date
  *     responses:
  *       201:
  *         description: Form data submitted successfully

@@ -5,7 +5,7 @@ const formDataSchema = new mongoose.Schema({
   lastName: String,
   email: String,
   phone: String,
-  age: String,
+  dob: Date,
   country: String,
   experience: String,
   kidsName: String,
