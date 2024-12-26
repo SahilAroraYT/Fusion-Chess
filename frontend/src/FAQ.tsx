@@ -2,10 +2,10 @@ import { NavLink } from "react-router-dom"
 
 const FAQ = () => {
     return (
-        <div>
-        <div>
+        <div className="bg-[#0e0e0e]">
+        <div className="bg-[#0e0e0e]">
             {/* Question div  */}
-            <div className="container mx-auto  mt-40">
+            <div className="container mx-auto  mt-20 text-white">
                 <h1 className="font-bold text-4xl">Do You Have a question?</h1>
                 <h2 className="font-semibold text-2xl my-5">We have answers (well, most of them!)</h2>
                 <p className="text-xl">Below you will find answers to the most common questions you may have related to Fusion chess or chess in general. If you still can’t find the answer you’re looking for, just
@@ -104,7 +104,7 @@ and the Coach. The Coach will share the class schedule and provide details on ho
 them with any questions</p>
                     </div>
                 </div>
-                <div className="collapse collapse-arrow bg-[#467188] mt-5 mb-20">
+                <div className="collapse collapse-arrow bg-[#467188] mt-5">
                     <input type="radio" name="my-accordion-2" />
                     <div className="collapse-title text-xl font-medium">WHERE DO I FIND DETAILS ABOUT THE COURSES YOU OFFER?</div>
                     <div className="collapse-content">

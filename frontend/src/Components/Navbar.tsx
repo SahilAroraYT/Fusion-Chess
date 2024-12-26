@@ -34,7 +34,7 @@ const Navbar = () => {
         <div className="font-bold text-2xl ml-5 cursor-pointer flex items-center font-[Poppins] text-white">
           <span className="w-auto">
             <img
-              src="/logo.png"
+              src="/logo.svg"
               className="w-40 md:w-40 lg:w-40 sm:w-44 max-w-full"
               alt="Fusion Chess"
             />
