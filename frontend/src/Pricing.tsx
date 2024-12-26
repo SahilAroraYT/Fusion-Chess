@@ -61,24 +61,24 @@ interface PlanCardProps {
 
 const PlanCard: React.FC<PlanCardProps> = ({ title, subtitle, image, objectives, schedule, groupSize, pricing }) => {
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+    <div className="bg-[#0e0e0e] rounded-lg shadow-white shadow-lg overflow-hidden">
       <img src={image} alt={title} className="h-48 w-full object-cover" />
       <div className="p-6">
-        <h3 className="text-3xl font-bold mb-2">{title}</h3>
-        <p className="text-black mb-4 text-2xl">{subtitle}</p>
-        <h4 className="font-semibold mb-1">Objectives</h4>
-        <ul className="list-disc list-inside text-black mb-4">
+        <h3 className="text-3xl font-bold mb-2 text-white">{title}</h3>
+        <p className="text-white mb-4 text-2xl">{subtitle}</p>
+        <h4 className="font-semibold mb-1 text-white">Objectives</h4>
+        <ul className="list-disc list-inside text-white mb-4">
           {objectives.map((objective, index) => (
             <li key={index}>{objective}</li>
           ))}
         </ul>
-        <p className="font-semibold mb-1">Schedule:</p>
-        <p className="text-black mb-4">{schedule}</p>
-        <p className="font-semibold mb-1">Group Size:</p>
-        <p className="text-black mb-4">{groupSize}</p>
-        <p className="font-semibold mb-1">Pricing:</p>
-        <p className="text-black mb-4">{pricing}</p>
-        <p className="text-black mt-2">
+        <p className="font-semibold mb-1 text-white">Schedule:</p>
+        <p className="text-white mb-4">{schedule}</p>
+        <p className="font-semibold mb-1 text-white">Group Size:</p>
+        <p className="text-white mb-4">{groupSize}</p>
+        <p className="font-semibold mb-1 text-white">Pricing:</p>
+        <p className="text-white mb-4">{pricing}</p>
+        <p className="text-white mt-2">
           + Guided practice sessions, brain-teasers, and Sunday tournaments every week
         </p>
       </div>
