@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   let Links = [
@@ -13,11 +14,10 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLUListElement | null>(null);
 
-  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setOpen(false); // Close the menu
+        setOpen(false);
       }
     };
 
@@ -30,8 +30,8 @@ const Navbar = () => {
   return (
     <div className="shadow-md w-full fixed top-0 left-0 z-50">
       <div className="md:flex items-center justify-between bg-[#000000] py-4 md:px-10 px-7 z-50">
-        {/* Logo Section */}
         <div className="font-bold text-2xl ml-5 cursor-pointer flex items-center font-[Poppins] text-white">
+          <NavLink to="/">
           <span className="w-auto">
             <img
               src="/logo.svg"
@@ -39,17 +39,16 @@ const Navbar = () => {
               alt="Fusion Chess"
             />
           </span>
+          </NavLink>
         </div>
 
-        {/* Hamburger menu for mobile */}
         <div
           onClick={() => setOpen(!open)}
           className="text-3xl absolute left-3 top-4 cursor-pointer md:hidden text-white"
         >
-          <ion-icon name={open ? "close" : "menu"}></ion-icon>
+          {open ? <X size={24} /> : <Menu size={24} />}
         </div>
 
-        {/* Mobile view: Right-aligned button */}
         <div className="absolute right-5 top-4 md:hidden">
           <button className="btn bg-[#2D4766] rounded-xl text-white px-8 -mt-1">
             <NavLink to="/register">
@@ -59,7 +58,6 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Menu Items */}
         <ul
           ref={menuRef}
           className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-[#000000] md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
@@ -72,10 +70,10 @@ const Navbar = () => {
                 to={link.link}
                 className={({ isActive }) =>
                   isActive
-                    ? "text-[#60A9D7] hover:text-gray-400 duration-500" // Active state styles
-                    : "text-white hover:text-gray-400 duration-500" // Non-active state styles
+                    ? "text-[#60A9D7] hover:text-gray-400 duration-500"
+                    : "text-white hover:text-gray-400 duration-500"
                 }
-                onClick={() => setOpen(false)} // Close menu when clicking a link
+                onClick={() => setOpen(false)}
               >
                 {link.name}
               </NavLink>
@@ -83,7 +81,6 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Desktop view: Button inside navbar */}
         <div className="hidden md:block">
           <NavLink to="/register">
             <button className="btn bg-[#2D4766] rounded-xl text-white px-8 md:ml-6">
