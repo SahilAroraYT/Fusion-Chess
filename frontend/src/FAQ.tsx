@@ -18,7 +18,7 @@ const FAQ = () => {
                     <input type="radio" name="my-accordion-2" />
                     <div className="collapse-title text-xl font-medium">ABOUT US</div>
                     <div className="collapse-content">
-                        <p>hello</p>
+                        <p> Fusion Chess is an Academy that believes in making chess simple and exciting for everyone. Whether you're a beginner taking your first steps or an intermediate player sharpening your skills, our academy is the perfect place to grow. Our experienced coaches focus on bridging the gap between learners and mastery by providing personalized guidance, engaging lessons, and a supportive community. Join us to unlock your potential and discover the fascinating world of chess!</p>
                     </div>
                 </div>
                 <div className="collapse collapse-arrow bg-[#467188] mt-5">
