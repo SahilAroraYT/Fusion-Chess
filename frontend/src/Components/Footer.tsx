@@ -16,11 +16,11 @@ const Footer = () => {
       <FaInstagram size={35} />
       </NavLink>
 
-      <NavLink to="">
+      <NavLink to="https://www.youtube.com/@FusionChess" target="_blank">
       <ImYoutube size={35} />
       </NavLink>
 
-      <NavLink to="">
+      <NavLink to="https://discord.gg/XcMPahYtRQ" target="_blank">
       <FaDiscord size={35} />
       </NavLink>
 
